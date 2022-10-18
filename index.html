@@ -4,53 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modul 1</title>
+    <meta name="viewport" content="width=  , initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <style>
-        body {
-            background-color: cyan;
-            margin: 0;
-            padding: 0;
-        }
+    <button>Ingen layout</button>
+    <button>Vertikal layout</button>
+    <button>Horizontal layout</button>
+    <button>Grid layout</button>
 
-        div {
-            position: absolute;
-            left: 45%;
-            top: 45%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            background-color: darkcyan;
-            border: 4px solid rgb(0, 79, 79);
-            animation-name: spin;
-            animation-duration: 2500ms;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
+    <h1>Eksempel 1</h1>
 
-        p {
-            font-family: arial;
-            color: white;
-            font-size: 30px;
-            text-align: center;
-
-        }
-
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-    <div>
-        <p>YAAAY 😃</p>
+    <div class="Box" style="background-color: green;">
+        Verktøy
     </div>
+    <div>
+        <ul>
+            <li>Liste 1
+                <ul>
+                    <li>Verktøy 1</li>
+                    <li><a href="">Verktøy 2</a></li>
+                    <li>Verktøy 3</li>
+                </ul>
+            </li>
+            <li>Liste 2</li>
+        </ul>
+    </div>
+    <br>
+    <div class="Box" style="background-color: blue;">HTML</div>
+    <div>
+        <ul>
+            <li>Liste 1
+                <ul>
+                    <li>HTML</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="Box" style="background-color: red;">
+        CSS
+    </div>
+    <div>
+        <ul>
+            <li>Liste 1
+                <ul>
+                    <li>CSS</li>
+                    <li>CSS</li>
+                    <li>CSS</li>
+                    <li>CSS</li>
+                    <li>CSS</li>
+                </ul>
+            </li>
+            <li>Liste 2</li>
+            <li>Liste 3
+                <ul>
+                    <li> Liste 4
+                        <ul>
+                            <li>Liste 5</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Liste 6</li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="Box" style="background-color: orange;">
+        Javascript
+    </div>
+    <div>
+        <ul>
+            <li>Liste 1</li>
+            <li>Liste 2</li>
+            <li>Liste 3</li>
+            <li>Liste 4</li>
+        </ul>
+    </div>
+
 </body>
 
 </html>

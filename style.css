@@ -1,0 +1,21 @@
+body {
+    font-family: arial;
+    margin: 20px;
+    padding: 0;
+}
+
+div.Box {
+    background-color: green;
+    width: 350px;
+    text-align: center;
+    font-size: large;
+    padding: 10px;
+    color: white;
+    margin: 0;
+}
+div {
+    background-color: lightgray;
+    width: 350px;
+    margin: 0;
+    padding: 10px;
+}
