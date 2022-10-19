@@ -5,13 +5,6 @@ body {
     background-color: rgb(24, 24, 24);
     text-shadow: 0px 0px 4px #000000;
 }
-body:after { /*Laster inn bilder*/
-    position:absolute; z-index:-1;
-    content: url('img/eple.jpg') 
-             url('img/pære.jpg') 
-             url('img/banan.jpg');
-}
-
 div.Box {
     background-color: green;
     max-width: 350px;
