@@ -4,75 +4,197 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=  , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <button>Ingen layout</button>
-    <button>Vertikal layout</button>
-    <button>Horizontal layout</button>
-    <button>Grid layout</button>
+    <button onclick="nolayout()">Ingen layout</button>
+    <button onclick="verticallayout()">Vertikal layout</button>
+    <button onclick="horizontallayout()">Horizontal layout</button>
+    <button onclick="gridlayout()">Grid layout</button>
+
+    <!--SCRIPT FOR GRIDS-->
+    <script async defer>
+        function nolayout(){
+
+        }
+        function verticallayout(){}
+    </script>
 
     <h1 style="color: white;">Produkter</h1>
 
-    <div class="Box" style="background-color: green;">
-        <b>Snacks</b>
-    </div>
-    <div>
-        <ul>
-            <li><b>Potetgull</b>
-                <ul>
-                    <li>Sørlandschips</li>
-                    <li>Doritos</li>
-                    <li>Kims</li>
-                </ul>
-            </li>
-            <li><b>Sjokolade</b></li>
-        </ul>
-    </div>
-    <br>
+    <!-- SCRIPT FOR KNAPPENE -->
+    <script async defer>
+        let nummer = 1;
 
-    <div class="Box" style="background-color: blue;">
-        <b>Drikke</b>
-    </div>
-    <div>
-        <ul>
-            <li><b>Melk</b>
-                <ul>
-                    <li>Tine</li>
-                    <li>Q</li>
-                </ul>
-            </li>
-            <li><b>Juice</b>
-                <ul>
-                    <li>Sunniva</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <br>
+        function show1() {
+            if (document.getElementById('content1').style.display == 'none') {
+                removeAll();
+                document.getElementById('content1').style.display = 'block';
+                console.log("display = none");
+            } else {
+                console.log("display != none");
+                document.getElementById('content1').style.display = 'none';
+            }
+        }
+        function show2() {
+            if (document.getElementById('content2').style.display == 'none') {
+                removeAll();
+                document.getElementById('content2').style.display = 'block';
+            } else {
+                document.getElementById('content2').style.display = 'none';
+            }
+        }
+        function show3() {
+            if (document.getElementById('content3').style.display == 'none') {
+                removeAll();
+                document.getElementById('content3').style.display = 'block';
+            } else {
+                document.getElementById('content3').style.display = 'none';
+            }
+        }
+        function show4() {
+            if (document.getElementById('content4').style.display == 'none') {
+                removeAll();
+                document.getElementById('content4').style.display = 'block';
+            } else {
+                document.getElementById('content4').style.display = 'none';
+                document.getElementById('frukttype').innerHTML = /*HTML*/`
+                <b>Bla gjennom frukt</b>
+            `;
+            }
+        }
+        function removeAll() {
+            document.getElementById('content1').style.display = 'none';
+            document.getElementById('content2').style.display = 'none';
+            document.getElementById('content3').style.display = 'none';
+            document.getElementById('content4').style.display = 'none';
 
-    <div class="Box" style="background-color: red;">
-        <b>Velvære</b>
-    </div>
-    <div>
-        <ul>
-            <li>Hudkrem</li>
-            <li>Shampoo</li>
-            <li>Balsam</li>
-            <li>Såpe</li>
-        </ul>
-    </div>
-    <br>
+            document.getElementById('frukttype').innerHTML = /*HTML*/`
+                <b>Bla gjennom frukt</b>
+            `;
+        }
+    </script>
+    <div id="container">
+        <div onclick="show1()" class="Box" style="background-color: green;">
+            <b>Snacks</b>
+        </div>
+        <div id="content1" style="display: none;">
+            <ul>
+                <li><b>Potetgull</b>
+                    <ul>
+                        <li>Sørlandschips</li>
+                        <li>Doritos</li>
+                        <li>Kims</li>
+                    </ul>
+                </li>
+                <li><b>Sjokolade</b></li>
+            </ul>
+        </div>
+        <br>
 
-    <div class="Box" style="background-color: orange;">
-        <b>Liste</b>
+        <div onclick="show2()" class="Box" style="background-color: blue;">
+            <b>Drikke</b>
+        </div>
+        <div id="content2" style="display: none;">
+            <ul>
+                <li><b>Melk</b>
+                    <ul>
+                        <li>Tine</li>
+                        <li>Q</li>
+                    </ul>
+                </li>
+                <li><b>Juice</b>
+                    <ul>
+                        <li>Sunniva</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <br>
+
+        <div onclick="show3()" class="Box" style="background-color: red;">
+            <b>Kosmetisk</b>
+        </div>
+        <div id="content3" style="display: none;">
+            <ul>
+                <li>Hudkrem</li>
+                <li>Shampoo</li>
+                <li>Balsam</li>
+                <li>Såpe</li>
+            </ul>
+        </div>
+        <br>
+
+        <div onclick="show4()" id="frukttype" class="Box" style="background-color: orange;">
+            <b>Bla gjennom frukt</b>
+        </div>
+        <div id="content4" style="display: none;">
+            <div id="bilde">
+                <button onclick="klikkMindre()">◀</button>
+                <img src="img/eple.jpg">
+                <button onclick="klikkMere()">▶</button>
+            </div>
+        </div>
     </div>
-    <div>
-        
-    </div>
+
+    <!--SCRIPT FOR FRUKT-->
+    <script async defer>
+        function klikk() {
+            if (nummer == 1) {
+                document.getElementById('bilde').innerHTML = /*HTML*/`
+                <button onclick="klikkMindre()">◀</button>
+                <img src="img/eple.jpg">
+                <button onclick="klikkMere()">▶</button>
+                `;
+
+                document.getElementById('frukttype').innerHTML = /*HTML*/`
+                <b>Eple</b>
+                `;
+            } if (nummer == 2) {
+                document.getElementById('bilde').innerHTML = /*HTML*/`
+                <button onclick="klikkMindre()">◀</button>
+                <img src="img/pære.jpg">
+                <button onclick="klikkMere()">▶</button>
+                `;
+
+                document.getElementById('frukttype').innerHTML = /*HTML*/`
+                <b>Pære</b>
+                `;
+            } if (nummer == 3) {
+                document.getElementById('bilde').innerHTML = /*HTML*/`
+                <button onclick="klikkMindre()">◀</button>
+                <img src="img/banan.jpg">
+                <button onclick="klikkMere()">▶</button>
+                `;
+
+
+                document.getElementById('frukttype').innerHTML = /*HTML*/`
+                <b>Banan</b>
+                `;
+            }
+        }
+        function klikkMindre() {
+            if (nummer <= 1) {
+                nummer = 3;
+            } else if (nummer > 1) {
+                nummer--;
+            }
+            console.log(nummer);
+            klikk();
+        }
+        function klikkMere() {
+            if (nummer < 3) {
+                nummer++;
+            } else {
+                nummer = 1;
+            }
+            console.log(nummer);
+            klikk();
+        }
+    </script>
 
 </body>
 
