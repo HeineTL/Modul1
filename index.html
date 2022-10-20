@@ -10,183 +10,177 @@
 </head>
 
 <body>
-    <button onclick="noLayout()">Ingen layout</button>
-    <button onclick="verticalLayout()">Vertikal layout</button>
-    <button onclick="horizontalLayout()">Horizontal layout</button>
-    <button onclick="gridLayout()">Grid layout</button>
+    <div id="alt">
+        <div class="buttons">
+            <button onclick="hideStore()" id="hideButton">Gjem butikk</button>
+            <button onclick="changeOrder()">Endre rekkefølge</button>
+        </div>
+        <!--SCRIPT FOR GRIDS-->
+        <script async defer>
+            let storeNumber = 0;
+            function hideStore() {
+                if (storeNumber == 0) {
+                    document.getElementById("container").style.display = "none";
+                    document.getElementById("hideButton").innerHTML = "Vis butikk";
+                    storeNumber++;
+                } else {
+                    document.getElementById("container").style.display = "initial";
+                    document.getElementById("hideButton").innerHTML = "Gjem butikk";
+                    storeNumber = 0;
+                }
+            }
+            function changeOrder() {
+                document.getElementById("")
+            }
+        </script>
 
-    <!--SCRIPT FOR GRIDS-->
-    <script async defer>
-        function noLayout() {
-
-        }
-        function verticalLayout() {
-
-        }
-        function horizontalLayout() {
-
-        }
-        function gridLayout() {
-
-        }
-    </script>
-
-    <h1 style="color: white;">Produkter</h1>
-
-    <!-- SCRIPT FOR KNAPPENE -->
-    <script async defer>
-        let nummer = 1;
-
-        function show1() {
-            if (document.getElementById('content1').style.display == 'none') {
-                removeAll();
-                document.getElementById('content1').style.display = 'block';
-            } else {
+        <!-- SCRIPT FOR KORTKNAPPENE -->
+        <script async defer>
+            function show1() {
+                showCards("content1");
+            }
+            function show2() {
+                showCards("content2");
+            }
+            function show3() {
+                showCards("content3");
+            }
+            function show4() {
+                showCards("content4");
+            }
+            function showCards(contentNavn) {
+                if (document.getElementById(contentNavn).style.display == 'none') {
+                    removeAll();
+                    document.getElementById(contentNavn).style.display = 'block';
+                } else {
+                    document.getElementById(contentNavn).style.display = 'none';
+                    if (contentNavn == "content4") {
+                        document.getElementById('frukttype').innerHTML = /*HTML*/`
+                    <b>Bla gjennom frukt</b>
+                    `;
+                    }
+                }
+            }
+            function removeAll() {
                 document.getElementById('content1').style.display = 'none';
-            }
-        }
-        function show2() {
-            if (document.getElementById('content2').style.display == 'none') {
-                removeAll();
-                document.getElementById('content2').style.display = 'block';
-            } else {
                 document.getElementById('content2').style.display = 'none';
-            }
-        }
-        function show3() {
-            if (document.getElementById('content3').style.display == 'none') {
-                removeAll();
-                document.getElementById('content3').style.display = 'block';
-            } else {
                 document.getElementById('content3').style.display = 'none';
-            }
-        }
-        function show4() {
-            if (document.getElementById('content4').style.display == 'none') {
-                removeAll();
-                document.getElementById('content4').style.display = 'block';
-            } else {
                 document.getElementById('content4').style.display = 'none';
+
                 document.getElementById('frukttype').innerHTML = /*HTML*/`
                 <b>Bla gjennom frukt</b>
             `;
             }
-        }
-        function removeAll() {
-            document.getElementById('content1').style.display = 'none';
-            document.getElementById('content2').style.display = 'none';
-            document.getElementById('content3').style.display = 'none';
-            document.getElementById('content4').style.display = 'none';
+        </script>
+        <div id="container">
 
-            document.getElementById('frukttype').innerHTML = /*HTML*/`
+            <h1 style="color: white; text-align: center;">Butikk 🛒</h1>
+
+            <div onclick="show1()" class="Box" style="background-color: green;">
+                <b>Snacks</b>
+            </div>
+            <div id="content1" style="display: none;">
+                <ul>
+                    <li><b>Potetgull</b>
+                        <ul>
+                            <li>Sørlandschips</li>
+                            <li>Doritos</li>
+                            <li>Kims</li>
+                        </ul>
+                    </li>
+                    <li><b>Sjokolade</b></li>
+                </ul>
+            </div>
+            <br>
+
+            <div onclick="show2()" class="Box" style="background-color: blue;">
+                <b>Drikke</b>
+            </div>
+            <div id="content2" style="display: none;">
+                <ul>
+                    <li><b>Melk</b>
+                        <ul>
+                            <li>Tine</li>
+                            <li>Q</li>
+                        </ul>
+                    </li>
+                    <li><b>Juice</b>
+                        <ul>
+                            <li>Sunniva</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <br>
+
+            <div onclick="show3()" class="Box" style="background-color: red;">
+                <b>Diverse</b>
+            </div>
+            <div id="content3" style="display: none;">
+                <ul>
+                    <li>Hudkrem</li>
+                    <li>Shampoo</li>
+                    <li>Balsam</li>
+                    <li>Såpe</li>
+                </ul>
+            </div>
+            <br>
+
+            <div onclick="show4()" id="frukttype" class="Box" style="background-color: orange;">
                 <b>Bla gjennom frukt</b>
-            `;
-        }
-    </script>
-    <div id="container">
-        <div onclick="show1()" class="Box" style="background-color: green;">
-            <b>Snacks</b>
-        </div>
-        <div id="content1" style="display: none;">
-            <ul>
-                <li><b>Potetgull</b>
-                    <ul>
-                        <li>Sørlandschips</li>
-                        <li>Doritos</li>
-                        <li>Kims</li>
-                    </ul>
-                </li>
-                <li><b>Sjokolade</b></li>
-            </ul>
-        </div>
-        <br>
-
-        <div onclick="show2()" class="Box" style="background-color: blue;">
-            <b>Drikke</b>
-        </div>
-        <div id="content2" style="display: none;">
-            <ul>
-                <li><b>Melk</b>
-                    <ul>
-                        <li>Tine</li>
-                        <li>Q</li>
-                    </ul>
-                </li>
-                <li><b>Juice</b>
-                    <ul>
-                        <li>Sunniva</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <br>
-
-        <div onclick="show3()" class="Box" style="background-color: red;">
-            <b>Kosmetisk</b>
-        </div>
-        <div id="content3" style="display: none;">
-            <ul>
-                <li>Hudkrem</li>
-                <li>Shampoo</li>
-                <li>Balsam</li>
-                <li>Såpe</li>
-            </ul>
-        </div>
-        <br>
-
-        <div onclick="show4()" id="frukttype" class="Box" style="background-color: orange;">
-            <b>Bla gjennom frukt</b>
-        </div>
-        <div id="content4" style="display: none;">
-            <div id="bilde">
-                <button onclick="klikkMindre()">◀</button>
-                <img src="img/Eple.jpg">
-                <button onclick="klikkMere()">▶</button>
+            </div>
+            <div id="content4" style="display: none; min-width: 340px;">
+                <div id="bilde">
+                    <button onclick="klikkMindre()">◀</button>
+                    <img src="img/Eple.jpg">
+                    <button onclick="klikkMere()">▶</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!--SCRIPT FOR BYTTE AV FRUKT-->
-    <script async defer>
-        function klikk() {
-            if (nummer == 1) {
-                fruktBytte("Eple");
-            } if (nummer == 2) {
-                fruktBytte("Pære");
-            } if (nummer == 3) {
-                fruktBytte("Banan");
+        <!--SCRIPT FOR BYTTE AV FRUKT-->
+        <script async defer>
+            let nummer = 1;
+
+            function klikk() {
+                if (nummer == 1) {
+                    fruktBytte("Eple");
+                } if (nummer == 2) {
+                    fruktBytte("Pære");
+                } if (nummer == 3) {
+                    fruktBytte("Banan");
+                }
             }
-        }
-        function fruktBytte(fruit) {
-            var lol = document.getElementById('bilde').innerHTML = /*HTML*/`
+            function fruktBytte(fruit) {
+                var lol = document.getElementById('bilde').innerHTML = /*HTML*/`
                 <button onclick="klikkMindre()">◀</button>
                 <img src="img/` + fruit + `.jpg">
                 <button onclick="klikkMere()">▶</button>
                 `;
 
 
-            var loll = document.getElementById('frukttype').innerHTML = /*HTML*/`
+                var loll = document.getElementById('frukttype').innerHTML = /*HTML*/`
                 <b>` + fruit + `</b>
                 `;
-        }
-        function klikkMindre() {
-            if (nummer <= 1) {
-                nummer = 3;
-            } else if (nummer > 1) {
-                nummer--;
             }
-            klikk();
-        }
-        function klikkMere() {
-            if (nummer < 3) {
-                nummer++;
-            } else {
-                nummer = 1;
+            function klikkMindre() {
+                if (nummer <= 1) {
+                    nummer = 3;
+                } else if (nummer > 1) {
+                    nummer--;
+                }
+                klikk();
             }
-            klikk();
-        }
-    </script>
-
+            function klikkMere() {
+                if (nummer < 3) {
+                    nummer++;
+                } else {
+                    nummer = 1;
+                }
+                klikk();
+            }
+        </script>
+    </div>
 </body>
 
 </html>

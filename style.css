@@ -5,10 +5,36 @@ body {
     background-color: rgb(24, 24, 24);
     text-shadow: 0px 0px 4px #000000;
 }
-/*GOOO*/
+
+#alt {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    background-color: rgb(33, 33, 33);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px 1px #161616;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 div.Box {
+    /*knappene*/
     background-color: green;
-    max-width: 350px;
+    width: 350px;
     text-align: center;
     font-size: large;
     padding: 10px;
@@ -16,32 +42,36 @@ div.Box {
     margin: 0;
     user-select: none;
 }
-#div.Box:hover {
-    cursor: pointer;
-}
+
 #container div {
-    background-color: rgb(46, 46, 46);
+    /*grå bakgrunn under kortene*/
+    background-color: rgb(57, 57, 57);
     color: white;
-    max-width: 350px;
+    width: 350px;
     margin: 0;
     padding: 10px;
 }
+
 ul li ul li {
     color: rgb(219, 219, 219);
 }
+
 #bilde {
     display: flex;
     justify-content: center;
+    max-width: 330px;
 }
+
 #bilde button {
     background-color: rgb(121, 121, 121);
-    border: 0;
     color: white;
     border: 0;
 }
+
 #bilde button:hover {
     cursor: pointer;
 }
+
 #bilde img {
     width: 150px;
     height: 150px;
