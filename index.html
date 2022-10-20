@@ -17,17 +17,17 @@
 
     <!--SCRIPT FOR GRIDS-->
     <script async defer>
-        function noLayout(){
+        function noLayout() {
 
         }
-        function verticalLayout(){
+        function verticalLayout() {
 
         }
-        function horizontalLayout(){
+        function horizontalLayout() {
 
         }
-        function gridLayout(){
-        
+        function gridLayout() {
+
         }
     </script>
 
@@ -152,37 +152,24 @@
     <script async defer>
         function klikk() {
             if (nummer == 1) {
-                document.getElementById('bilde').innerHTML = /*HTML*/`
-                <button onclick="klikkMindre()">◀</button>
-                <img src="img/eple.jpg">
-                <button onclick="klikkMere()">▶</button>
-                `;
-
-                document.getElementById('frukttype').innerHTML = /*HTML*/`
-                <b>Eple</b>
-                `;
+                fruktBytte("Eple");
             } if (nummer == 2) {
-                document.getElementById('bilde').innerHTML = /*HTML*/`
-                <button onclick="klikkMindre()">◀</button>
-                <img src="img/pære.jpg">
-                <button onclick="klikkMere()">▶</button>
-                `;
-
-                document.getElementById('frukttype').innerHTML = /*HTML*/`
-                <b>Pære</b>
-                `;
+                fruktBytte("Pære");
             } if (nummer == 3) {
-                document.getElementById('bilde').innerHTML = /*HTML*/`
+                fruktBytte("Banan");
+            }
+        }
+        function fruktBytte(fruit) {
+            var lol = document.getElementById('bilde').innerHTML = /*HTML*/`
                 <button onclick="klikkMindre()">◀</button>
-                <img src="img/banan.jpg">
+                <img src="img/` + fruit + `.jpg">
                 <button onclick="klikkMere()">▶</button>
                 `;
 
 
-                document.getElementById('frukttype').innerHTML = /*HTML*/`
-                <b>Banan</b>
+            var loll = document.getElementById('frukttype').innerHTML = /*HTML*/`
+                <b>` + fruit + `</b>
                 `;
-            }
         }
         function klikkMindre() {
             if (nummer <= 1) {
