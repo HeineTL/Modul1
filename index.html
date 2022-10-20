@@ -41,9 +41,7 @@
             if (document.getElementById('content1').style.display == 'none') {
                 removeAll();
                 document.getElementById('content1').style.display = 'block';
-                console.log("display = none");
             } else {
-                console.log("display != none");
                 document.getElementById('content1').style.display = 'none';
             }
         }
@@ -148,7 +146,7 @@
         </div>
     </div>
 
-    <!--SCRIPT FOR FRUKT-->
+    <!--SCRIPT FOR BYTTE AV FRUKT-->
     <script async defer>
         function klikk() {
             if (nummer == 1) {
@@ -177,7 +175,6 @@
             } else if (nummer > 1) {
                 nummer--;
             }
-            console.log(nummer);
             klikk();
         }
         function klikkMere() {
@@ -186,7 +183,6 @@
             } else {
                 nummer = 1;
             }
-            console.log(nummer);
             klikk();
         }
     </script>
