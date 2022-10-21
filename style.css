@@ -1,0 +1,75 @@
+body {
+    background-color: rgb(23, 23, 23);
+    margin: 50px;
+}
+
+#top-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    background-color: rgb(43, 43, 43);
+
+    font-family: arial;
+    color: white;
+    text-shadow: 0px 0px 4px #000000;
+    box-shadow: 0px 0px 10px 1px #090909;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#top {
+    text-align: center;
+    border-bottom: 4px solid rgb(33, 33, 33);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#cards {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+#card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(60, 60, 60);
+    max-width: 150px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 0px 3px rgb(20, 20, 20);
+    margin-bottom: 20px;
+}
+
+.tekst {
+    text-align: center;
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.kommentar {
+    font-size: 15px;
+    color: rgb(203, 203, 203);
+    font-weight: normal;
+}
+
+#card img {
+    height: 120px;
+    width: 120px;
+    box-shadow: 0px 0px 0px 3px rgb(0, 0, 0);
+}
