@@ -1,13 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Snake</title>
 </head>
+
 <body>
-    
+    <div class="div-instruksjon-container">
+        <div class="instruksjon-container">
+            <h1>Bruk</h1>
+            <div class="key">W</div>
+            <div class="key">A</div>
+            <div class="key">S</div>
+            <div class="key">D</div>
+            <h1>for å flytte slangen</h1>
+        </div>
+    </div>
+
+    <div id="snake">
+        <p>🐍</p>
+    </div>
+
+    <script async defer>
+        let moveDistance = 100;
+
+        let currentLocX = 0;
+        let currentLocY = 0;
+
+        function moveYOpp(YY) {
+            currentLocY = currentLocY - YY;
+            document.getElementById("snake").style.top = currentLocY + "px";
+        }
+
+        function moveYNed(YY) {
+            currentLocY = currentLocY + YY;
+            document.getElementById("snake").style.top = currentLocY + "px";
+        }
+        function moveXHøyre(XX) {
+            currentLocX = currentLocX + XX;
+            document.getElementById("snake").style.left = currentLocX + "px";
+        }
+        function moveXVenstre(XX) {
+            currentLocX = currentLocX - XX;
+            document.getElementById("snake").style.left = currentLocX + "px";
+        }
+
+        document.onkeypress = function (event) {
+            event = event || window.event;
+            var charCode = event.keyCode || event.which;
+            var charString = String.fromCharCode(charCode);
+
+            if (charString == "w" || charString == "W") {
+                moveYOpp(moveDistance);
+            }
+            if (charString == "s" || charString == "S") {
+                moveYNed(moveDistance);
+            }
+            if (charString == "a" || charString == "A") {
+                moveXVenstre(moveDistance);
+            }
+            if (charString == "d" || charString == "D") {
+                moveXHøyre(moveDistance);
+            }
+
+        }
+
+
+        /*function returnNumber(str) {
+            var num = str.replace(/[^0-9]/g, '');
+            return parseInt(num, 10);
+        }*/
+    </script>
+
 </body>
+
 </html>
