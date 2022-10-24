@@ -21,32 +21,62 @@
         </div>
     </div>
 
-    <div id="snake">
+    <div class="objekt" id="snake">
         <p>🐍</p>
     </div>
 
-    <script async defer>
-        let moveDistance = 100;
+    <div class="objekt" id="apple">
+        <p>🍎</p>
+    </div>
 
-        let currentLocX = 0;
-        let currentLocY = 0;
+    <!--EPLE-->
+    <script async defer>
+
+    </script>
+
+    <!--SLANGE BEVEGELSE-->
+    <script async defer>
+        const moveDistance = 100;
+
+        var currentLocX = 0;
+        var currentLocY = 0;
+
+        var snake = document.getElementById("snake");
 
         function moveYOpp(YY) {
-            currentLocY = currentLocY - YY;
-            document.getElementById("snake").style.top = currentLocY + "px";
+            flytt("y", "opp");
         }
-
         function moveYNed(YY) {
-            currentLocY = currentLocY + YY;
-            document.getElementById("snake").style.top = currentLocY + "px";
+            flytt("y", "ned");
         }
         function moveXHøyre(XX) {
-            currentLocX = currentLocX + XX;
-            document.getElementById("snake").style.left = currentLocX + "px";
+            flytt("x", "høyre");
         }
         function moveXVenstre(XX) {
-            currentLocX = currentLocX - XX;
-            document.getElementById("snake").style.left = currentLocX + "px";
+            flytt("x", "venstre");
+        }
+
+        function flytt(akse, retning) {
+            if (akse == "y") {
+                if (retning == "opp") {
+                    currentLocY = currentLocY - moveDistance;
+                    snake.style.top = currentLocY + "px";
+                }
+                if (retning == "ned") {
+                    currentLocY = currentLocY + moveDistance;
+                    snake.style.top = currentLocY + "px";
+                }
+            }
+            if (akse == "x") {
+                if (retning == "høyre") {
+                    currentLocX = currentLocX + moveDistance;
+                    snake.style.left = currentLocX + "px";
+                }
+                if (retning == "venstre") {
+                    currentLocX = currentLocX - moveDistance;
+                    snake.style.left = currentLocX + "px";
+                }
+            }
         }
 
         document.onkeypress = function (event) {

@@ -4,8 +4,8 @@ body {
     padding: 0;
 }
 
-#snake {
-    position: relative;
+.objekt {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,16 +14,29 @@ body {
     background-color: green;
     box-shadow: 0px 0px 0px 5px rgb(0, 0, 0);
     height: 100px;
-    max-width: 100px;
+    width: 100px;
     border-radius: 50%;
-    margin-top: 20px;
-
 }
 
-#snake p {
+.objekt p {
     margin: 0;
     padding: 0;
     font-size: 50px;
+}
+#snake {
+    z-index: 2;
+}
+
+#apple {
+    background-color: rgb(146, 31, 31);
+    z-index: 1;
+    height: 50px;
+    width: 50px;
+    margin: 25px;
+    box-shadow: 0px 0px 0px 2.5px rgb(0, 0, 0);
+}
+#apple p {
+    font-size: 25px;
 }
 
 .div-instruksjon-container {
@@ -31,6 +44,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .instruksjon-container {
@@ -39,7 +53,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    z-index: 1;
     font-family: arial;
     color: white;
     padding: 10px;
