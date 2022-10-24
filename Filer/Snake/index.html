@@ -10,14 +10,15 @@
 </head>
 
 <body>
-    <div class="div-instruksjon-container">
+    <div class="div-instruksjon-container" id="instruction-window">
         <div class="instruksjon-container">
             <h1>Bruk</h1>
             <div class="key">W</div>
             <div class="key">A</div>
             <div class="key">S</div>
             <div class="key">D</div>
-            <h1>for å flytte slangen</h1>
+            <h1>for å flytte slangen.</h1>
+            <button onclick="closeWindow()">Lukk vindu</button>
         </div>
     </div>
 
@@ -29,9 +30,59 @@
         <p>🍎</p>
     </div>
 
+    <div class="container-popup" id="popup" style="display: none">
+        <div class="popup-window">
+            +1🍏
+        </div>
+    </div>
+
+    <div class="container-points">
+        <div id="points">
+            <div class="points-content" id="poeng-number">0</div>
+            <div class="points-content">🍎</div>
+        </div>
+    </div>
+
     <!--EPLE-->
     <script async defer>
+        var apple = document.getElementById("apple");
 
+        var appleCount = 0;
+
+        var appleWidth = 0;
+        var appleHeight = 0;
+
+        appleSpawn();
+
+        function appleSpawn() {
+            appleWidth = getRandomInt(1400);
+            appleHeight = getRandomInt(800);
+            apple.style.left = appleWidth + "px";
+            apple.style.top = appleHeight + "px";
+        }
+        function appleCheck() {
+            if (currentLocX == appleWidth && currentLocY == appleHeight) {
+                //Slangen er over eplet
+                appleSpawn();
+
+                appleCount++;
+                document.getElementById("poeng-number").innerHTML = appleCount;
+
+                document.getElementById("popup").style.display = "flex";
+                
+                setTimeout(() => {
+                    document.getElementById("popup").style.display = "none";
+                }, 250);
+
+            }
+        }
+        function getRandomInt(max) {
+            var nummer = Math.floor(Math.random() * max);
+            return roundUp(nummer);
+        }
+        function roundUp(num) {
+            return Math.ceil(num / 100) * 100;
+        }
     </script>
 
     <!--SLANGE BEVEGELSE-->
@@ -59,22 +110,30 @@
         function flytt(akse, retning) {
             if (akse == "y") {
                 if (retning == "opp") {
-                    currentLocY = currentLocY - moveDistance;
-                    snake.style.top = currentLocY + "px";
+                    if (currentLocY - moveDistance > -1) {
+                        currentLocY = currentLocY - moveDistance;
+                        snake.style.top = currentLocY + "px";
+                    }
                 }
                 if (retning == "ned") {
-                    currentLocY = currentLocY + moveDistance;
-                    snake.style.top = currentLocY + "px";
+                    if (currentLocY - moveDistance < 700) {
+                        currentLocY = currentLocY + moveDistance;
+                        snake.style.top = currentLocY + "px";
+                    }
                 }
             }
             if (akse == "x") {
                 if (retning == "høyre") {
-                    currentLocX = currentLocX + moveDistance;
-                    snake.style.left = currentLocX + "px";
+                    if (currentLocX - moveDistance < 1700) {
+                        currentLocX = currentLocX + moveDistance;
+                        snake.style.left = currentLocX + "px";
+                    }
                 }
                 if (retning == "venstre") {
-                    currentLocX = currentLocX - moveDistance;
-                    snake.style.left = currentLocX + "px";
+                    if (currentLocX - moveDistance > -1) {
+                        currentLocX = currentLocX - moveDistance;
+                        snake.style.left = currentLocX + "px";
+                    }
                 }
             }
         }
@@ -86,17 +145,24 @@
 
             if (charString == "w" || charString == "W") {
                 moveYOpp(moveDistance);
+                appleCheck();
             }
             if (charString == "s" || charString == "S") {
                 moveYNed(moveDistance);
+                appleCheck();
             }
             if (charString == "a" || charString == "A") {
                 moveXVenstre(moveDistance);
+                appleCheck();
             }
             if (charString == "d" || charString == "D") {
                 moveXHøyre(moveDistance);
+                appleCheck();
             }
+        }
 
+        function closeWindow() {
+            document.getElementById("instruction-window").style.display = "none";
         }
 
 
