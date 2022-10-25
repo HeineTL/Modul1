@@ -32,8 +32,9 @@ body {
 input {
     padding: 10px;
 }
-.buttons {
-    margin: 10px;
+button {
+    padding: 5px;
+    margin-top: 5px;
 }
 .buttons h2 {
     margin: 10px;
