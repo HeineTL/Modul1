@@ -18,18 +18,52 @@
     </div>
 
     <script async defer>
-        const numbers = [6, 4, 9, 2, 10, 1, 3, 8, 7, 5];
+        const numbers = randomArray(20);
 
         let arrayNumber = document.getElementById("arrayNumber");
 
         arrayNumber.innerHTML = numbers;
 
         function sort() {
-            let arrayLength = numbers.length;
-            
-            for (let i = 0; i < arrayLength; i++){
-                console.log(i);
+            console.log("start sorting");
+            let ikkeferdig = true;
+
+
+            while (ikkeferdig) {
+                ikkeferdig = false;
+                for (let i = 0; i < numbers.length; i++) {
+                    
+                    if (numbers[i+1] < numbers[i]) {
+                        let temp = numbers[i + 1];
+                        numbers[i + 1] = numbers[i];
+                        numbers[i] = temp;
+                        ikkeferdig = true;
+                    }
+                }
+                arrayNumber.innerHTML = numbers;
             }
+        }
+
+        // function sort() {
+        //     let arrayLength = numbers.length;
+
+        //     for (let i = 0; i < arrayLength + 1; i++) {
+        //         console.log(i);
+        //         if (numbers[i] !== i) {
+        //             numbers[i] = i;
+        //         }
+        //     }
+        //     arrayNumber.innerHTML = numbers;
+        // }
+
+        function randomArray(antall) {
+            let arr = new Array();
+            for (let i = 0; i < antall; i++) {
+                let random = Math.floor(Math.random() * 100);
+                console.log(random);
+                arr.push(random);
+            }
+            return arr;
         }
     </script>
 </body>
