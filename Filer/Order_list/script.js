@@ -16,6 +16,7 @@ function sort() {
     for (let i = 0; i < tall.length; i++) {
         if (tall[i] < tall[i+1]) {
             let temp = tall[i+1];
+            
             tall[i+1] = tall[i];
             tall[i] = temp;
         }

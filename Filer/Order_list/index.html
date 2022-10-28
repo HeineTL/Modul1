@@ -11,7 +11,7 @@
 
 <body>
 
-    <div id="box">
+    <!-- <div id="box">
         <h1>Array number:</h1>
         <p id="arrayNumber"></p>
         <button onclick="sort()">Sorter!</button>
@@ -25,47 +25,69 @@
         arrayNumber.innerHTML = numbers;
 
         function sort() {
-            console.log("start sorting");
             let ikkeferdig = true;
-
 
             while (ikkeferdig) {
                 ikkeferdig = false;
+
                 for (let i = 0; i < numbers.length; i++) {
-                    
-                    if (numbers[i+1] < numbers[i]) {
+
+                    if (numbers[i + 1] < numbers[i]) {
                         let temp = numbers[i + 1];
+
                         numbers[i + 1] = numbers[i];
                         numbers[i] = temp;
                         ikkeferdig = true;
                     }
                 }
+
                 arrayNumber.innerHTML = numbers;
             }
         }
-
-        // function sort() {
-        //     let arrayLength = numbers.length;
-
-        //     for (let i = 0; i < arrayLength + 1; i++) {
-        //         console.log(i);
-        //         if (numbers[i] !== i) {
-        //             numbers[i] = i;
-        //         }
-        //     }
-        //     arrayNumber.innerHTML = numbers;
-        // }
-
         function randomArray(antall) {
             let arr = new Array();
             for (let i = 0; i < antall; i++) {
                 let random = Math.floor(Math.random() * 100);
-                console.log(random);
                 arr.push(random);
             }
             return arr;
         }
+    </script> -->
+
+    <div id="box">
+        <h1 id="tekst">Det var en gang en liten bjørn som het Ørn</h1>
+        <p id="arrayNumber"></p>
+        <button onclick="checkLetter()">Check letters</button>
+    </div>
+
+    <script async defer>
+        let text = document.getElementById("tekst").innerHTML;
+
+        let textArray = text.split('');
+
+        let rawString = [];
+
+        let fullString;
+
+        let annenHver = 0;
+
+        function checkLetter() {
+            for (let i = 0; i < text.length; i++) {
+                if (annenHver == 0){
+                    annenHver++;
+                    rawString.push(textArray[i].toLowerCase());
+                } else if(annenHver == 1){
+                    annenHver--;
+                    rawString.push(textArray[i].toUpperCase());
+                }
+            }
+
+            fullString = rawString.join('');
+
+            document.getElementById("arrayNumber").innerHTML = `Annenhver stor og liten bokstav: ${fullString}`;
+        }
     </script>
+
 </body>
 
 </html>
