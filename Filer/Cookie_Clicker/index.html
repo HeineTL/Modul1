@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cookie Clicker</title>
+
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sub-container" id="input">
+        </div>
+    </div>
+
+    <script>
+        //MODEL
+        let cookies = 0;
+        let cookiesPerClick = 1;
+        let cookiesPerSecond = 0;
+
+        updateView();
+        window.setInterval(function startRefresh() { refreshViewAuto(); }, 1000);
+
+
+        //VIEW
+        function updateView() {
+            document.getElementById("input").innerHTML = /*HTML*/`
+            <h1>COOKIE CLICKER</h1>
+            <h2 onclick="cookieClick()">🍪</h2>
+            <h3>${cookies}</h3>
+
+            <div class="upgrades">
+                <h4 class="oppgraderinger">Oppgraderinger</h4>
+                <div class="upgrade-cards">
+                    <div onclick="upgradeClick(this)">
+                        <h4>Apekatt 🐒</h4>
+                        <p>+1🍪 per klikk</p>
+                        <h3>50🍪</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Fabrikk 🏭</h4>
+                        <p>+2🍪 per sekund</p>
+                        <h3>200🍪</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Duplikator 🌀</h4>
+                        <p>+30🍪 per sekund</p>
+                        <h3>2 000🍪</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Tidsmaskin 🧭</h4>
+                        <p>+500🍪 per sekund</p>
+                        <h3>20 000🍪</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Trollmann 🧙‍♂️</h4>
+                        <p>+5 000🍪 per sekund</p>
+                        <h3>100 000🍪</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Tor 🔨</h4>
+                        <p>+3 000🍪 per klikk</p>
+                        <h3>250 000🍪</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Bonde 👨‍🌾</h4>
+                        <p>+75 000🍪 per sekund</p>
+                        <h3>1 000 000</h3>
+                    </div>
+                    <div onclick="upgradeClick(this)">
+                        <h4>Cookie Monster 🥶</h4>
+                        <p>+5 000 000🍪 per sekund</p>
+                        <h3>50 000 000</h3>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        //CONTROLLER
+        function cookieClick() {
+            cookies += cookiesPerClick;
+            updateView();
+        }
+
+        function upgradeClick(upgrade) {
+            let upgradeType = upgrade.innerHTML;
+
+            if (upgradeType.includes("Apekatt")) {
+                if (cookies < 50) return;
+                cookiesPerClick += 1;
+                cookies -= 50;
+            }
+            if (upgradeType.includes("Fabrikk")) {
+                if (cookies < 200) return;
+                cookiesPerSecond += 2;
+                cookies -= 200;
+            }
+            if (upgradeType.includes("Duplikator")) {
+                if (cookies < 2000) return;
+                cookiesPerSecond += 30;
+                cookies -= 2000;
+            }
+            if (upgradeType.includes("Tidsmaskin")) {
+                if (cookies < 20000) return;
+                cookiesPerSecond += 500;
+                cookies -= 20000;
+            }
+            if (upgradeType.includes("Trollmann")) {
+                if (cookies < 100000) return;
+                cookiesPerSecond += 5000;
+                cookies -= 100000;
+            }
+            if (upgradeType.includes("Tor")) {
+                if (cookies < 250000) return;
+                cookiesPerClick += 3000;
+                cookies -= 250000;
+            }
+            if (upgradeType.includes("Bonde")) {
+                if (cookies < 1000000) return;
+                cookiesPerSecond += 75000;
+                cookies -= 1000000;
+            }
+            if (upgradeType.includes("Cookie Monster")) {
+                if (cookies < 50000000) return;
+                cookiesPerSecond += 5000000;
+                cookies -= 50000000;
+            }
+
+            updateView();
+        }
+
+        function refreshViewAuto() {
+            cookies += cookiesPerSecond;
+            updateView();
+        }
+
+    </script>
+</body>
+
+</html>
