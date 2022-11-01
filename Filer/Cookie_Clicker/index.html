@@ -31,7 +31,6 @@
         updateView();
         window.setInterval(function startRefresh() { refreshViewAuto(); }, 1000);
 
-
         //VIEW
         function updateView() {
             document.getElementById("input").innerHTML = /*HTML*/`
@@ -41,100 +40,49 @@
 
             <div class="upgrades">
                 <h4 class="oppgraderinger">Oppgraderinger</h4>
-                <div class="upgrade-cards">
-                    <div onclick="upgradeClick(this)">
-                        <h4>Apekatt 🐒</h4>
-                        <p>+1🍪 per klikk</p>
-                        <h3>50🍪</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Fabrikk 🏭</h4>
-                        <p>+2🍪 per sekund</p>
-                        <h3>200🍪</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Duplikator 🌀</h4>
-                        <p>+30🍪 per sekund</p>
-                        <h3>2 000🍪</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Tidsmaskin 🧭</h4>
-                        <p>+500🍪 per sekund</p>
-                        <h3>20 000🍪</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Trollmann 🧙‍♂️</h4>
-                        <p>+5 000🍪 per sekund</p>
-                        <h3>100 000🍪</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Tor 🔨</h4>
-                        <p>+3 000🍪 per klikk</p>
-                        <h3>250 000🍪</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Bonde 👨‍🌾</h4>
-                        <p>+75 000🍪 per sekund</p>
-                        <h3>1 000 000</h3>
-                    </div>
-                    <div onclick="upgradeClick(this)">
-                        <h4>Cookie Monster 🥶</h4>
-                        <p>+5 000 000🍪 per sekund</p>
-                        <h3>50 000 000</h3>
-                    </div>
-                </div>
+                <div class="upgrade-cards" id="cards"></div>
             </div>
             `;
+
+            registerUpgrades("Apekatt", "🐒", 1, 50, 1);
+            registerUpgrades("Fabrikk", "🏭", 2, 200, 2);
+            registerUpgrades("Duplikator", "🌀", 30, 2000, 2);
+            registerUpgrades("Tidsmaskin", "🧭", 500, 10000, 2);
+            registerUpgrades("Trollmann", "🧙", 5000, 50000, 2);
+            registerUpgrades("Tor", "🔨", 3000, 250000, 1);
+            registerUpgrades("Bonde", "👨‍🌾", 10000, 1000000, 2);
+            registerUpgrades("Yeti", "🥶", 50000, 5000000, 2);
         }
 
         //CONTROLLER
+        function registerUpgrades(name, emoji, cookies, cost, type) {
+            window['price_' + name] = cost;
+
+            let buyType = type == 1 ? 'klikk' : 'sekund';
+
+            document.getElementById("cards").innerHTML += /*HTML*/`
+                <div onclick="buyUpgrade(${cost}, ${cookies}, ${type})">
+                    <h4>${name} ${emoji}</h4>
+                    <p>+${cookies}🍪 per ${buyType}</p>
+                    <h3>${cost}</h3>
+                </div>`;
+        }
+
         function cookieClick() {
             cookies += cookiesPerClick;
             updateView();
         }
 
-        function upgradeClick(upgrade) {
-            let upgradeType = upgrade.innerHTML;
+        function buyUpgrade(costt, cookiess, typee) {
 
-            if (upgradeType.includes("Apekatt")) {
-                if (cookies < 50) return;
-                cookiesPerClick += 1;
-                cookies -= 50;
-            }
-            if (upgradeType.includes("Fabrikk")) {
-                if (cookies < 200) return;
-                cookiesPerSecond += 2;
-                cookies -= 200;
-            }
-            if (upgradeType.includes("Duplikator")) {
-                if (cookies < 2000) return;
-                cookiesPerSecond += 30;
-                cookies -= 2000;
-            }
-            if (upgradeType.includes("Tidsmaskin")) {
-                if (cookies < 20000) return;
-                cookiesPerSecond += 500;
-                cookies -= 20000;
-            }
-            if (upgradeType.includes("Trollmann")) {
-                if (cookies < 100000) return;
-                cookiesPerSecond += 5000;
-                cookies -= 100000;
-            }
-            if (upgradeType.includes("Tor")) {
-                if (cookies < 250000) return;
-                cookiesPerClick += 3000;
-                cookies -= 250000;
-            }
-            if (upgradeType.includes("Bonde")) {
-                if (cookies < 1000000) return;
-                cookiesPerSecond += 75000;
-                cookies -= 1000000;
-            }
-            if (upgradeType.includes("Cookie Monster")) {
-                if (cookies < 50000000) return;
-                cookiesPerSecond += 5000000;
-                cookies -= 50000000;
+            if (cookies < costt) return;
+
+            if (typee === 1) { /*Klikk*/
+                cookiesPerClick += cookiess;
+                cookies -= costt;
+            } else if (typee === 2) { /*Sekund*/
+                cookiesPerSecond += cookiess;
+                cookies -= costt;
             }
 
             updateView();
