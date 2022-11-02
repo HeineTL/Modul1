@@ -28,32 +28,33 @@
         let cookiesPerClick = 1;
         let cookiesPerSecond = 0;
 
-        const tingogtang = [
-            {
-                navn: "apekatt",
-                avatar: "🐒",
-                perklikk: 1,
-                pris: 50,
-                type: 1
-            },
-            {
-                navn: "Fabrikk",
-                avatar: "🏭",
-                perklikk: 1,
-                pris: 50,
-                type: 1
-            }
-        ];
+        let upgradesArray =
+            [
+                { upgradeName: "Datamus", upgradeEmoji: "🖱️", cookieGain: 1, cookieCost: 50, cookieType: 1, amount: 0},
+                { upgradeName: "Fabrikk", upgradeEmoji: "🏭", cookieGain: 2, cookieCost: 200, cookieType: 2, amount: 0 },
+                { upgradeName: "Duplikator", upgradeEmoji: "🌀", cookieGain: 30, cookieCost: 2000, cookieType: 2, amount: 0 },
+                { upgradeName: "Tidsmaskin", upgradeEmoji: "🧭", cookieGain: 500, cookieCost: 10000, cookieType: 2, amount: 0 },
+                { upgradeName: "Trollmann", upgradeEmoji: "🧙", cookieGain: 5000, cookieCost: 50000, cookieType: 2, amount: 0 },
+                { upgradeName: "Tor", upgradeEmoji: "🔨", cookieGain: 3000, cookieCost: 250000, cookieType: 1, amount: 0 },
+                { upgradeName: "Bonde", upgradeEmoji: "👨‍🌾", cookieGain: 10000, cookieCost: 1000000, cookieType: 2, amount: 0 },
+                { upgradeName: "Yeti", upgradeEmoji: "🥶", cookieGain: 50000, cookieCost: 5000000, cookieType: 2, amount: 0 }
+            ];
 
         updateView();
-        window.setInterval(function startRefresh() { cookiePassiveGain(); }, 1000);
+        window.setInterval(function startRefresh() { updateView(); }, 1000);
 
         //VIEW
         function updateView() {
+
+            cookies += cookiesPerSecond;
+
             document.getElementById("input").innerHTML = /*HTML*/`
             <h1>COOKIE CLICKER</h1>
             <h2 onclick="cookieClick()">🍪</h2>
             <h3>${cookies}</h3>
+            <p>🍪 per klikk: <b>${cookiesPerClick}</b></p>
+            <p>🍪 per sekund: <b>${cookiesPerSecond}</b></p>
+            <br/>
 
             <div class="upgrades">
                 <h4 class="oppgraderinger">Oppgraderinger</h4>
@@ -63,30 +64,34 @@
 
             document.getElementById("cards").innerHTML = "";
 
-            registerUpgrades("Apekatt", '🐒', 1, 50, 1);
-            registerUpgrades("Fabrikk", "🏭", 2, 200, 2);
-            registerUpgrades("Duplikator", "🌀", 30, 2000, 2);
-            registerUpgrades("Tidsmaskin", "🧭", 500, 10000, 2);
-            registerUpgrades("Trollmann", "🧙", 5000, 50000, 2);
-            registerUpgrades("Tor", "🔨", 3000, 250000, 1);
-            registerUpgrades("Bonde", "👨‍🌾", 10000, 1000000, 2);
-            registerUpgrades("Yeti", "🥶", 50000, 5000000, 2);
+            for (let i = 0; i < upgradesArray.length; i++) {
+                registerUpgrades(
+                    upgradesArray[i].upgradeName,
+                    upgradesArray[i].upgradeEmoji,
+                    upgradesArray[i].cookieGain,
+                    upgradesArray[i].cookieCost,
+                    upgradesArray[i].cookieType,
+                    i,
+                    upgradesArray[i].amount
+                    );
+            }
         }
 
         //CONTROLLER
 
-        function registerUpgrades(upgradeName, emoji, cookieGain, cookieCost, cookieType) {
+        function registerUpgrades(upgradeName, emoji, cookieGain, cookieCost, cookieType, indexNumber, amount) {
             let buyType = cookieType == 1 ? 'klikk' : 'sekund';
 
             document.getElementById("cards").innerHTML += /*HTML*/`
-                <div onclick="buyUpgrade(${cookieCost}, ${cookieGain}, ${cookieType})">
+                <div onclick="buyUpgrade(${cookieCost}, ${cookieGain}, ${cookieType}, ${indexNumber}, ${amount})">
                     <h4>${upgradeName} ${emoji}</h4>
                     <p>+${cookieGain}🍪 per ${buyType}</p>
-                    <h3>${cookieCost}</h3>
+                    <h3>${cookieCost}🍪</h3>
+                    <p>(antall: ${amount})</p>
                 </div>`;
         }
 
-        function buyUpgrade(cookieCost, cookieGain, cookieType) {
+        function buyUpgrade(cookieCost, cookieGain, cookieType, indexNumber, amount) {
 
             if (cookies < cookieCost) return;
 
@@ -98,18 +103,14 @@
                 cookies -= cookieCost;
             }
 
-            antallFabrikker++;
+            upgradesArray[indexNumber].cookieCost = Math.floor(upgradesArray[indexNumber].cookieCost * 1.2);
+            upgradesArray[indexNumber].amount++;
 
             updateView();
         }
 
         function cookieClick() {
             cookies += cookiesPerClick;
-            updateView();
-        }
-
-        function cookiePassiveGain() {
-            cookies += cookiesPerSecond;
             updateView();
         }
 
