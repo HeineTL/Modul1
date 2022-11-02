@@ -28,8 +28,25 @@
         let cookiesPerClick = 1;
         let cookiesPerSecond = 0;
 
+        const tingogtang = [
+            {
+                navn: "apekatt",
+                avatar: "🐒",
+                perklikk: 1,
+                pris: 50,
+                type: 1
+            },
+            {
+                navn: "Fabrikk",
+                avatar: "🏭",
+                perklikk: 1,
+                pris: 50,
+                type: 1
+            }
+        ];
+
         updateView();
-        window.setInterval(function startRefresh() { refreshViewAuto(); }, 1000);
+        window.setInterval(function startRefresh() { cookiePassiveGain(); }, 1000);
 
         //VIEW
         function updateView() {
@@ -44,7 +61,9 @@
             </div>
             `;
 
-            registerUpgrades("Apekatt", "🐒", 1, 50, 1);
+            document.getElementById("cards").innerHTML = "";
+
+            registerUpgrades("Apekatt", '🐒', 1, 50, 1);
             registerUpgrades("Fabrikk", "🏭", 2, 200, 2);
             registerUpgrades("Duplikator", "🌀", 30, 2000, 2);
             registerUpgrades("Tidsmaskin", "🧭", 500, 10000, 2);
@@ -55,17 +74,33 @@
         }
 
         //CONTROLLER
-        function registerUpgrades(name, emoji, cookies, cost, type) {
-            window['price_' + name] = cost;
 
-            let buyType = type == 1 ? 'klikk' : 'sekund';
+        function registerUpgrades(upgradeName, emoji, cookieGain, cookieCost, cookieType) {
+            let buyType = cookieType == 1 ? 'klikk' : 'sekund';
 
             document.getElementById("cards").innerHTML += /*HTML*/`
-                <div onclick="buyUpgrade(${cost}, ${cookies}, ${type})">
-                    <h4>${name} ${emoji}</h4>
-                    <p>+${cookies}🍪 per ${buyType}</p>
-                    <h3>${cost}</h3>
+                <div onclick="buyUpgrade(${cookieCost}, ${cookieGain}, ${cookieType})">
+                    <h4>${upgradeName} ${emoji}</h4>
+                    <p>+${cookieGain}🍪 per ${buyType}</p>
+                    <h3>${cookieCost}</h3>
                 </div>`;
+        }
+
+        function buyUpgrade(cookieCost, cookieGain, cookieType) {
+
+            if (cookies < cookieCost) return;
+
+            if (cookieType === 1) { /*Klikk*/
+                cookiesPerClick += cookieGain;
+                cookies -= cookieCost;
+            } else if (cookieType === 2) { /*Sekund*/
+                cookiesPerSecond += cookieGain;
+                cookies -= cookieCost;
+            }
+
+            antallFabrikker++;
+
+            updateView();
         }
 
         function cookieClick() {
@@ -73,22 +108,7 @@
             updateView();
         }
 
-        function buyUpgrade(costt, cookiess, typee) {
-
-            if (cookies < costt) return;
-
-            if (typee === 1) { /*Klikk*/
-                cookiesPerClick += cookiess;
-                cookies -= costt;
-            } else if (typee === 2) { /*Sekund*/
-                cookiesPerSecond += cookiess;
-                cookies -= costt;
-            }
-
-            updateView();
-        }
-
-        function refreshViewAuto() {
+        function cookiePassiveGain() {
             cookies += cookiesPerSecond;
             updateView();
         }
