@@ -6,22 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Orakel</title>
+    <title>Stein saks papir</title>
 </head>
 
 <body>
     <div class="outer-container">
         <div class="top-container">
             <div class="container">
-                <h1>Orakel</h1>
-                <p>Still orakelet et spørsmål og du vil få et svar!</p>
-                <input type="text" id="string" name="stringname" placeholder="Skriv inn ditt spørsmål her!">
-                <div class="buttons">
-
-                    <button onclick="askQuestion()">Still orakelet spørsmålet</button>
-
-                    <h2 id="answerHeadline"></h2>
-                    <p id="answerText"></p>
+                <h1>Stein saks papir</h1>
+                <p>Velg stein, saks eller papir</p>
+                <div id="optionss" class="options">
+                    <img src="img/stein.png" onclick="klikk('stein')">
+                    <img src="img/saks.png" onclick="klikk('saks')">
+                    <img src="img/papir.png" onclick="klikk('papir')">
                 </div>
             </div>
         </div>
