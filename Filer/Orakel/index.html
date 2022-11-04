@@ -10,21 +10,19 @@
 </head>
 
 <body>
-    <div class="top-container">
-        <div class="container">
-            <h1>STRING ENDRENATOR 2000</h1>
-            <p>Har du alltid drømt om å endre dine strings? Vel nå kan du det kun ved å skrive inn ditt string og trykke
-                på en av knappene!</p>
-            <input type="text" id="string" name="stringname" placeholder="Skriv inn ditt string her!">
-            <div class="buttons">
+    <div class="outer-container">
+        <div class="top-container">
+            <div class="container">
+                <h1>Orakel</h1>
+                <p>Still orakelet et spørsmål og du vil få et svar!</p>
+                <input type="text" id="string" name="stringname" placeholder="Skriv inn ditt spørsmål her!">
+                <div class="buttons">
 
-                <button onclick="upperCase()" type="submit">Stor bokstav</button>
-                <button onclick="lowerCase()" type="submit">Små bokstav</button>
-                <button onclick="firstLetterToUppercase()" type="submit">Første bokstav til uppercase</button>
-                <button onclick="reverseString()" type="submit">Snu teksten baklengs</button>
+                    <button onclick="askQuestion()">Still orakelet spørsmålet</button>
 
-                <h2 id="answerHeadline"></h2>
-                <p id="answerText"></p>
+                    <h2 id="answerHeadline"></h2>
+                    <p id="answerText"></p>
+                </div>
             </div>
         </div>
     </div>
