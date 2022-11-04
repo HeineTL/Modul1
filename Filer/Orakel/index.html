@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>String test</title>
+</head>
+
+<body>
+    <div class="top-container">
+        <div class="container">
+            <h1>STRING ENDRENATOR 2000</h1>
+            <p>Har du alltid drømt om å endre dine strings? Vel nå kan du det kun ved å skrive inn ditt string og trykke
+                på en av knappene!</p>
+            <input type="text" id="string" name="stringname" placeholder="Skriv inn ditt string her!">
+            <div class="buttons">
+
+                <button onclick="upperCase()" type="submit">Stor bokstav</button>
+                <button onclick="lowerCase()" type="submit">Små bokstav</button>
+                <button onclick="firstLetterToUppercase()" type="submit">Første bokstav til uppercase</button>
+                <button onclick="reverseString()" type="submit">Snu teksten baklengs</button>
+
+                <h2 id="answerHeadline"></h2>
+                <p id="answerText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
