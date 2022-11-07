@@ -21,7 +21,6 @@ body {
     text-align: center;
     justify-content: center;
     width: 500px;
-    margin: 30px;
     padding: 30px;
     background-color: rgb(36, 36, 36);
 
@@ -31,6 +30,10 @@ body {
 .container h1 {
     margin: 0;
     text-decoration: underline;
+}
+.container h2 {
+    margin: 0;
+    margin-top: 20px;
 }
 .container p {
     padding: 10px;
@@ -46,11 +49,4 @@ button {
     padding: 10px;
     font-size: 15px;
     margin-top: 5px;
-}
-.buttons h2 {
-    margin: 10px;
-}
-.buttons p {
-    margin: 0;
-    padding: 0;
 }
